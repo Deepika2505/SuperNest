@@ -1,0 +1,139 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  display: flex;
+  width: 700px;
+  height: 400px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.modal-left{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.modal-right {
+  flex: 1;
+  padding: 20px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.logo-name-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  margin-right: 10px;
+}
+
+.close-btn {
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+  color: #888; /* Lighter color on hover */
+}
+
+h2 {
+  margin-bottom: 20px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #333;
+}
+
+h2 strong{
+    font-size: 16px;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 5px;
+}
+
+h2 .light-text{
+    font-size: 14px;
+    color: #1C1B1F99;
+    font-weight: 400;
+}
+
+.input-container{
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+.country-code{
+    color: #888;
+    font-size: 14px;
+    font-weight: 300;
+    margin-right: 5px;
+}
+
+.input-field {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    color: #333;
+    font-weight: 400;
+}
+
+.input-field::placeholder {
+  color: #aaa;
+  font-weight: 300;
+}
+
+.otp-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.otp-btn:hover {
+  background-color: #0056b3;
+}
+
+.error-message{
+    color: red;
+    font-size: 12px;
+    margin-bottom: 10px;
+}

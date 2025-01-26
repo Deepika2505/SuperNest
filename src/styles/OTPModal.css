@@ -1,0 +1,161 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  display: flex;
+  width: 700px;
+  height: 400px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.modal-left{
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+.modal-right {
+  flex: 1;
+  padding: 20px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+
+
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.logo-name-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  margin-right: 10px;
+}
+
+.close-btn {
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+  color: #888; /* Lighter color on hover */
+}
+
+h2 {
+  margin-bottom: 20px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #333;
+}
+
+h2 strong{
+    font-size: 16px;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 5px;
+}
+
+h2 .light-text{
+    font-size: 13px;
+    color: #666;
+    font-weight: 300;
+}
+
+.otp-modal {
+  text-align: center;
+}
+
+.otp-input-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.otp-input {
+  width: 30px;
+  height: 30px;
+  font-size: 16px;
+  text-align: center;
+  margin: 0 8px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  outline: none;
+  font-weight: bold;
+}
+
+.otp-input:focus {
+  border-color: #4E40EB;
+}
+
+
+.otp-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.otp-btn:hover {
+  background-color: #0056b3;
+}
+
+.error-message{
+    color: red;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.change-phone {
+  color: #007bff;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.change-phone:hover {
+  text-decoration: none;
+}
+
+.clickable-text {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.clickable-text:hover {
+  text-decoration: none;
+  opacity: 0.8;
+}
