@@ -1,0 +1,92 @@
+/* AvailableIn.css */
+
+.available-in-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 0;
+  background-color: #f9f9f9;
+}
+
+.available-in-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.image-row {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  width: 80%;  /* 80% of the container width */
+  margin-bottom: 30px;
+}
+
+.image-box {
+  position: relative;
+  width: 48%;  /* Each image box takes 48% of the width */
+  height: 250px;  /* Fixed height for the images */
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.location-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  /* Ensures the image covers the area */
+}
+
+.image-overlay {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  color: white;
+  font-size: 1rem;
+  padding: 5px;
+}
+
+.location {
+  font-weight: 500;
+}
+
+.nests {
+  font-style: italic;
+}
+
+.request-section {
+  width: 80%;
+  text-align: left;
+  margin-top: 5px;
+}
+
+.request-section p{
+    margin: 0;
+}
+
+.request-link {
+  color: #007bff;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.request-link:hover {
+  color: #0056b3;
+}
+
+@media (max-width: 768px) {
+  .image-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .image-box {
+    width: 100%;  /* Full width on small screens */
+  }
+}

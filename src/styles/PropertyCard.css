@@ -1,0 +1,120 @@
+/* Property Card Styles */
+
+.property-card {
+  display: flex;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+.property-images {
+  width: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.image-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.property-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.prev-button,
+.next-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0,0,0,0.4);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+  transition: transform 0.3s ease, background-color 0.2s ease;
+}
+
+.prev-button {
+  left: 10px;
+}
+
+.next-button {
+  right: 10px;
+}
+
+.prev-button :hover,
+.next-button :hover{
+    transform: scale(1.1);
+}
+
+.property-details {
+  width: 50%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.property-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  margin: 5px 0;
+}
+
+.property-location {
+  color: #777;
+  font-size: 1rem;
+}
+
+.property-cost {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.property-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.feature-box {
+  font-size: 12px;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  flex-basis: auto; /* Allow the box to grow based on its content */
+  flex-grow: 0; /* Prevent the box from growing to take extra space */
+  white-space: normal; /* Allow the content to wrap if it's too long */
+  word-wrap: break-word; /* Break the word if necessary */
+  overflow: break-word; /* Prevent overflow of text */
+}
+
+.more-features {
+  font-size: 12px;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  cursor: pointer;
+}

@@ -1,0 +1,122 @@
+/* Recently Added Styles */
+
+.recently-added {
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.recently-added-header {
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.recently-added-title {
+  font-size: 48px;
+  font-weight: bold;
+  color: #333;
+  text-align: left;
+  width: 45%;
+  word-wrap: break-word;
+}
+
+.recently-added-subtext {
+  font-size: 14px;
+  font-weight: 400;
+  color: #555;
+  width: 55%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.recently-added-subtext a {
+  color: #5b5b5b;
+  font-weight: 500;
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+.recently-added-subtext a:hover {
+  text-decoration: underline;
+}
+
+.recently-added-layout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+}
+
+.property-cards-container {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  width: 80%;
+  margin: 0 auto;
+  scroll-snap-type: x mandatory;
+}
+
+.property-cards-container::-webkit-scrollbar {
+  display: none; /* Hide the scrollbar */
+}
+
+.scroll-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  position: absolute;
+  top: 30px;
+  left: 0;
+  z-index: 2;
+}
+
+.scroll-button {
+  background-color: #EEF0F2;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  padding: 8px 16px;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.scroll-button:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.1);
+}
+
+.scroll-button:focus{
+    outline: none;
+}
+
+.property-card {
+  width: calc(50% - 20px); /* Adjust width to display 2 cards max */
+  min-width: calc(50% - 20px);
+  flex-shrink: 0;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  text-align: left;
+  transition: transform 0.3s ease;
+  scroll-snap-align: start;
+}
+
+.property-card:hover {
+  transform: translateY(-5px);
+}
+
+@media (max-width: 768px) {
+  .property-card {
+    width: calc(100% - 20px); /* Adjust for 1 card on smaller screens */
+    min-width: calc(100% - 20px);
+  }
+}

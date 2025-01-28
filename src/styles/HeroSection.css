@@ -1,0 +1,71 @@
+.hero-section{
+    position: relative;
+    overflow: visible;
+    padding-top: 80px;
+}
+
+.hero-search {
+  position: absolute;
+  bottom: -60px; /* Move the search bar down such that it overlaps the SVG */
+  left: 50%;
+  transform: translateX(-50%); /* Center align the search bar */
+  z-index: 10; /* Ensure it appears above the SVG */
+  width: 70%; /* Adjust width as needed */
+  box-sizing: border-box;
+}
+
+.prop-owner{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 120px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  background-color: #4a4a4a; /* Light gray background */
+  padding: 8px 16px;
+  border-radius: 14px;
+  transition: background-color 0.3s;
+  width: max-content;
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  color: #ffffff;
+  font-size: 12px;
+}
+
+.prop-owner .icon{
+  display: flex;
+  align-items: center;
+}
+
+.prop-owner .text{
+  margin-left: 8px;
+}
+
+.arrow-button{
+  background-color: transparent;
+  border: none;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.arrow-icon {
+  font-size: 14px; /* Set the size of the arrow */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 8px;
+  transition: color 0.3s ease;
+  color: #ffffff;
+}
+
+/* Button hover effect */
+.arrow-button:hover .arrow-icon {
+  color: #1a1a1a; /* Change color on hover */
+}

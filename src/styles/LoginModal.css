@@ -44,15 +44,6 @@
   margin-bottom: 20px;
 }
 
-.logo-name-container {
-  display: flex;
-  align-items: center;
-}
-
-.logo {
-  margin-right: 10px;
-}
-
 .close-btn {
   font-size: 18px;
   font-weight: bold;

@@ -1,0 +1,147 @@
+/* Container for the scrolling line */
+.scrolling-line-container {
+  width: 100%; /* Full width */
+  overflow: hidden; /* Hide overflow so the text can scroll */
+  margin-top: 20px; /* Space between this and other content */
+  background-color: #f9f9f9; /* Optional: background color */
+}
+
+.scrolling-line {
+  display: flex;
+  align-items: center;
+  white-space: nowrap; /* Prevent text from wrapping to the next line */
+  animation: scroll 20s linear infinite; /* Continuous scroll */
+}
+
+.scrolling-line-item {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #333;
+  margin-right: 25px;
+  display: flex;
+  align-items: center;
+}
+
+.scrolling-line-item::after {
+  content: '';
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #bbb;
+  margin-left: 15px;
+}
+
+.scrolling-line-item:last-child::after {
+  content: '';
+}
+
+/* Keyframe for scroll animation */
+@keyframes scroll {
+  0% {
+    transform: translateX(100%); /* Start from right */
+  }
+  100% {
+    transform: translateX(-100%); /* Move to the left */
+  }
+}
+
+
+/* Container for the scrolling city image and name */
+.city-scrolling-container {
+  width: 100%; /* Full width */
+  overflow: hidden; /* Hide overflow so the text/image can scroll */
+  margin-top: 20px; /* Space between features and city */
+  background-color: #f9f9f9; /* Optional: background color */
+}
+
+.city-scrolling-line {
+  display: flex;
+  align-items: center; /* Align image and name vertically */
+  white-space: nowrap; /* Prevent wrapping */
+  animation: cityScroll 20s linear infinite; /* Continuous scroll */
+}
+
+.city-name-container {
+  display: flex;
+  align-items: center;
+  margin-right: 30px; /* Space between city names */
+}
+
+.city-image {
+  width: 50px; /* Adjust as per your desired image size */
+  height: 50px; /* Adjust as per your desired image size */
+  border-radius: 50%;
+  margin-right: 15px; /* Space between image and city name */
+  object-fit: cover; /* Ensure the image maintains aspect ratio */
+}
+
+.city-name {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Keyframe for scrolling the city image and name */
+@keyframes cityScroll {
+  0% {
+    transform: translateX(100%); /* Start from the right */
+  }
+  100% {
+    transform: translateX(-100%); /* Move to the left */
+  }
+}
+
+
+.feature-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px 0;
+  width: 75%;
+  margin: 0 auto;
+}
+
+.feature-box {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  width: 30%;
+  text-align: left;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.feature-box:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.feature-number {
+  font-size: 1.5rem;
+  color: #bbb;
+  font-weight: 500;
+}
+
+.feature-header {
+  display: flex;
+  align-items: center; /* Aligns the icon and title vertically in the center */
+  justify-content: left; /* Centers the icon and title horizontally */
+  gap: 10px; /* Space between icon and title */
+  margin-bottom: 10px; /* Space between icon/title and text */
+}
+
+.feature-icon {
+  font-size: 1rem; /* Adjust the size of the icon */
+}
+
+.feature-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.feature-text {
+  font-size: 1rem;
+  color: #777;
+  margin-top: 5px;
+}

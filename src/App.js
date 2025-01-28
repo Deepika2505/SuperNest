@@ -2,6 +2,15 @@ import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import LoginModal from './components/LoginModal';
 import OTPModal from './components/OTPModal';
+import Footer from './components/Footer';
+import Search from './components/Search';
+import Experience from './components/Experience';
+import Content from './components/Content';
+import AvailableIn from './components/AvailableIn';
+import RecentlyAdded from './components/RecentlyAdded';
+import SearchBar from './components/SearchBar';
+import HeroSection from './components/HeroSection';
+
 
 function App(){
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
@@ -35,7 +44,15 @@ function App(){
       )}
       {isOTPModalOpen && (
         <OTPModal phoneNumber={phoneNumber} closeModal={closeModal} openLoginModal={openLoginModal} />
-      )}        
+      )}
+      <HeroSection/>
+      <AvailableIn/>
+      {/* <SearchBar/> */}
+      <RecentlyAdded/>
+      <Content/>
+      <Experience/>
+      <Search/>
+      <Footer/>       
     </div>
   )
 }

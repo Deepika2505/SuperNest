@@ -2,14 +2,35 @@
   background-color: #f8f8f8;
   padding: 1rem;
   border-bottom: 1px solid #ddd;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
 .navbar-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.navbar-left{
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-grow: 1;
+}
+
+.navbar-options{
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
 }
 
 .navbar ul {
@@ -25,6 +46,13 @@
   color: #333;
 }
 
+.navbar-actions{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
 .navbar-actions button {
   margin-left: 1rem;
   padding: 0.5rem 1rem;
@@ -36,4 +64,96 @@
 .download {
   background-color: #007bff;
   color: white;
+}
+
+.dropdown{
+  position: relative;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: flex;
+}
+
+.dropdown .arrow{
+  margin-left: 5px;
+  font-size: 0.8rem;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  z-index: 1000;
+  min-width: 150px;
+  display: none;
+  flex-direction: column;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.dropdown-menu li {
+  padding: 10px 15px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.dropdown-menu li a {
+  color: #333;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-menu li a:hover {
+  background: #f0f0f0;
+}
+
+.navbar ul li{
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  /* Stack navbar items vertically for smaller screens */
+  .navbar-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar-left, .navbar-options, .navbar-actions {
+    width: 100%;
+    justify-content: flex-start;
+    margin-bottom: 1rem; /* Add margin between sections */
+  }
+
+  .navbar-actions {
+    justify-content: flex-start; /* Align buttons to the left */
+  }
+
+  .navbar-actions button {
+    margin-left: 0;
+    padding: 0.5rem; /* Reduce padding for buttons */
+  }
+
+  /* Make navbar items wrap on smaller screens */
+  .navbar ul {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    gap: 1rem;
+  }
+
+  .navbar ul li {
+    flex: 1 1 100%; /* Make each item take full width on small screens */
+    text-align: center; /* Center the links */
+  }
+
+  .download {
+    width: 100%; /* Full width for buttons on small screens */
+    margin-top: 10px; /* Space between buttons */
+  }
 }
