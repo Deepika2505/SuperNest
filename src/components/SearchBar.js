@@ -7,6 +7,17 @@ const SearchBar = () => {
     console.log("Search button clicked, redirect!!");
   }
   return (
+    <div className="search-bar-class">
+    <div className="search-bar-top">
+        <select className="search-bar-dropdown">
+          <option value="location">Select Location</option>
+          <option value="hyderabad">Hyderabad</option>
+          <option value="bengaluru">Bengaluru</option>
+          <option value="vijayawada">Vijayawada</option>
+          <option value="guwahati">Guwahati</option>
+          <option value="ahmedabad">Ahmedabad</option>
+        </select>
+      </div>
     <div className="search-bar-container">
       <div className="search-bar-header">
         <span>Trusted by 12000+ tenants</span>
@@ -21,6 +32,7 @@ const SearchBar = () => {
           <option value="guwahati">Guwahati</option>
           <option value="ahmedabad">Ahmedabad</option>
         </select>
+        <div className="search-input-container">
         <input
           type="text"
           className="search-input"
@@ -29,7 +41,9 @@ const SearchBar = () => {
         <button className="search-button" onClick={handleClick}>
           <FiSearch />
         </button>
+        </div>
       </div>
+    </div>
     </div>
   );
 };

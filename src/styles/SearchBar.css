@@ -1,4 +1,4 @@
-/* Container for the entire search bar component */
+
 .search-bar-container {
   background-color: #4a4a4a;
   color: #ffffff;
@@ -7,9 +7,10 @@
   margin-bottom: 24px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   overflow: visible;
+  width: 100%;
+  max-width: 800px;
 }
 
-/* Header with the "trusted by tenants" and "supported by Microsoft" texts */
 .search-bar-header {
   display: flex;
   justify-content: space-between;
@@ -18,22 +19,22 @@
   margin-bottom: 12px;
 }
 
-/* Inner box for the dropdown, input, and search button */
 .search-bar {
   display: flex;
   align-items: center;
   background-color: #ffffff;
-  /* border: 1px solid #ced4da; */
   border-radius: 10px;
   padding: 8px;
-  border: none;
-  box-shadow: none;
   width: 100%;
   box-sizing: border-box;
 }
 
-/* Location dropdown styles */
+.search-bar-dropdown{
+  display: none;
+}
+
 .location-dropdown {
+  display: block;
   padding: 8px;
   border: 1px solid #ced4da;
   border-radius: 6px;
@@ -44,7 +45,13 @@
   box-sizing: border-box;
 }
 
-/* Search input field */
+.search-input-container {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: 8px;
+}
+
 .search-input {
   flex: 1;
   padding: 8px;
@@ -56,7 +63,6 @@
   box-sizing: border-box;
 }
 
-/* Search button */
 .search-button {
   display: flex;
   align-items: center;
@@ -75,4 +81,66 @@
 .search-button:hover {
   background-color: #4a4a4a;
   color: #fff;
+}
+
+
+@media (max-width: 768px) {
+  .search-bar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* Stack texts vertically */
+  .search-bar-header {
+    flex-direction: column;
+    gap: 5px;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .location-dropdown{
+    display: none;
+  }
+
+  .search-bar-dropdown{
+    display: block;
+    padding: 8px;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #495057;
+    margin-right: 8px;
+    width: 150px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .search-bar-header span:first-child{
+    order: -1;
+    margin-bottom: 10px;
+  }
+
+  .search-bar-header span:first-child{
+    order: 1;
+    margin-top: 10px;
+  }
+
+  .search-input-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+  }
+
+  .search-input {
+    width: 100%;
+  }
+
+  .search-button {
+    width: auto;
+  }
 }

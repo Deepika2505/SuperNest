@@ -144,9 +144,24 @@
   font-size: 0.9rem;
 }
 
+.footer-middle-1{
+  display:block;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-middle-2{
+  display: none;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .footer-top {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-right {
     flex-direction: column;
     text-align: center;
   }
@@ -157,9 +172,27 @@
 
   .footer-social-media {
     margin-bottom: 1.5rem;
+    text-align: left;
   }
 
   .footer-links {
     margin-bottom: 1.5rem;
+    text-align: left;
   }
+
+  .footer-discover {
+    margin-bottom: 1.5rem;
+    text-align: left;
+  }
+
+
+  .footer-middle-1{
+    display: none;
+  }
+
+  .footer-middle-2{
+    display: block;
+    flex-direction: column;
+  }
+
 }

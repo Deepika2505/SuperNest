@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import LoginModal from './components/LoginModal';
 import OTPModal from './components/OTPModal';
@@ -8,7 +8,6 @@ import Experience from './components/Experience';
 import Content from './components/Content';
 import AvailableIn from './components/AvailableIn';
 import RecentlyAdded from './components/RecentlyAdded';
-import SearchBar from './components/SearchBar';
 import HeroSection from './components/HeroSection';
 
 
@@ -33,9 +32,26 @@ function App(){
     setIsLoginModalOpen(true);
   }
 
+  const navbarRef = useRef(null);
+  const [navbarHeight,setNavbarHeight] = useState(0);
+
+  useEffect(()=>{
+    const updateNavbarHeight = () => {
+      if(navbarRef.current){
+        setNavbarHeight(navbarRef.current.offsetHeight);
+      }
+    };
+
+    updateNavbarHeight();
+    window.addEventListener('resize',updateNavbarHeight);
+    return () =>{
+      window.removeEventListener('resize',updateNavbarHeight);
+    };
+  },[]);
+
   return (
     <div className='App'>
-      <Navbar openLoginModal={openLoginModal} />
+      <Navbar ref = {navbarRef} openLoginModal={openLoginModal} />
       {isLoginModalOpen && (
         <LoginModal
           closeModal={closeModal}
@@ -45,7 +61,7 @@ function App(){
       {isOTPModalOpen && (
         <OTPModal phoneNumber={phoneNumber} closeModal={closeModal} openLoginModal={openLoginModal} />
       )}
-      <HeroSection/>
+      <HeroSection  className="hero-section" style={{ marginTop: `${navbarHeight}px` }}/>
       <AvailableIn/>
       {/* <SearchBar/> */}
       <RecentlyAdded/>

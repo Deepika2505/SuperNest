@@ -1,18 +1,19 @@
 .navbar {
   background-color: #f8f8f8;
-  padding: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   border-bottom: 1px solid #ddd;
-  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   width: 100%;
   z-index: 1000;
+  overflow: hidden;
 }
 
 .navbar-container {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
   width: 100%;
   max-width: 1200px;
@@ -20,11 +21,13 @@
   padding: 0 1rem;
 }
 
+
 .navbar-left{
   display: flex;
   align-items: center;
   gap: 1.5rem;
-  flex-grow: 1;
+  flex:1;
+  min-width: 50%;
 }
 
 .navbar-options{
@@ -51,19 +54,29 @@
   align-items: center;
   gap: 1rem;
   justify-content: flex-end;
+  flex: 1;
+  min-width: 50%;
 }
 
 .navbar-actions button {
-  margin-left: 1rem;
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  white-space: nowrap;
 }
 
-.download {
+.download-button {
   background-color: #007bff;
   color: white;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .dropdown{
@@ -118,42 +131,138 @@
   position: relative;
 }
 
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1001;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  /* overflow-y: auto; */
+}
+
+.mobile-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.mobile-menu ul li {
+  margin-bottom: 1.5rem;
+}
+
+.mobile-menu ul li a {
+  text-decoration: none;
+  color: #333;
+  font-size: 1.5rem;
+}
+
+.mobile-menu ul li a:hover {
+  background-color: #f0f0f0;
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+
+.collapsible {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.collapsible:hover {
+  background-color: #f0f0f0;
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+
+.collapsible-content {
+  list-style: none;
+  padding: 0;
+  margin-left: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.collapsible-content li a {
+  font-size: 1.2rem;
+  color: #555;
+}
+
 @media (max-width: 768px) {
   /* Stack navbar items vertically for smaller screens */
   .navbar-container {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    /* align-items: flex-start; */
+    justify-content: space-between;
+    padding: 0rem;
   }
 
-  .navbar-left, .navbar-options, .navbar-actions {
-    width: 100%;
+  .navbar-left{
+    flex: 1;
+    display: flex;
+    align-items: center;
     justify-content: flex-start;
-    margin-bottom: 1rem; /* Add margin between sections */
   }
 
   .navbar-actions {
-    justify-content: flex-start; /* Align buttons to the left */
+    flex: 1;
+    justify-content: flex-end;
+    min-width: auto;
   }
 
   .navbar-actions button {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem; /* Reduce padding for buttons */
+  }
+
+  .navbar-actions button:last-child{
+    margin-right: 0;
+  }
+
+  .navbar-options {
+    display: none;
+  }
+
+  /* Hamburger icon visible only on mobile */
+  .menu-toggle {
+    display: block;
     margin-left: 0;
-    padding: 0.5rem; /* Reduce padding for buttons */
   }
 
-  /* Make navbar items wrap on smaller screens */
-  .navbar ul {
+  .mobile-menu {
+    padding: 2rem;
+  }
+
+  .mobile-menu ul {
     display: flex;
-    flex-wrap: wrap; /* Allow items to wrap to the next line */
-    gap: 1rem;
+    flex-direction: column;
   }
 
-  .navbar ul li {
-    flex: 1 1 100%; /* Make each item take full width on small screens */
-    text-align: center; /* Center the links */
+  .mobile-menu ul li {
+    text-align: left;
   }
+}
 
-  .download {
-    width: 100%; /* Full width for buttons on small screens */
-    margin-top: 10px; /* Space between buttons */
+@media (min-width: 769px) {
+  .home-link {
+    display: none;
+  }
+  .mobile-menu{
+    display: none;
   }
 }

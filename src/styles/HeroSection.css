@@ -1,24 +1,26 @@
 .hero-section{
     position: relative;
     overflow: visible;
-    padding-top: 80px;
+    transition: margin-top 0.3s ease;
 }
 
 .hero-search {
   position: absolute;
-  bottom: -60px; /* Move the search bar down such that it overlaps the SVG */
+  bottom: 0%;
   left: 50%;
-  transform: translateX(-50%); /* Center align the search bar */
-  z-index: 10; /* Ensure it appears above the SVG */
-  width: 70%; /* Adjust width as needed */
+  transform: translateX(-50%);
+  z-index: 10;
+  width: 60%;
   box-sizing: border-box;
+  margin-bottom: -50px;
 }
 
 .prop-owner{
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  top: 120px;
+  top: 0;
+  margin-top: 4%;
   z-index: 10;
   display: flex;
   align-items: center;
@@ -68,4 +70,22 @@
 /* Button hover effect */
 .arrow-button:hover .arrow-icon {
   color: #1a1a1a; /* Change color on hover */
+}
+
+.svg-container-1{
+  display: block;
+}
+
+.svg-container-2{
+  display: none;
+}
+
+@media (max-width:768px){
+  .svg-container-1{
+    display: none;
+  }
+  
+  .svg-container-2{
+    display: block;
+  }
 }
