@@ -43,11 +43,14 @@ function LoginModal({ closeModal, openOTPModal}) {
             <Logo/>
             <button className="close-btn" onClick={closeModal}>✖</button>
         </div>
+        <div className='modal-content'>
+        <div className='modal-text'>
         <h2>
           <strong>Enter SuperNest</strong>
           <br />
           <span className="light-text">Register or login back into SuperNest by entering your mobile number</span>
         </h2>
+        </div>
         <div className='input-container'>
             <span className='country-code'>+91</span>
             <input 
@@ -59,6 +62,7 @@ function LoginModal({ closeModal, openOTPModal}) {
             />
         </div>
         {errorMessage && <p className='error-message'>{errorMessage}</p>}
+        </div>
         <button className="otp-btn" onClick={handleSubmit}>Get OTP</button>
         {isOTPModalOpen && <OTPModal phoneNumber={phoneNumber} closeModal={closeOTPModal} />}
       </div>

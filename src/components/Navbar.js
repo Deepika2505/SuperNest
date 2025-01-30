@@ -24,6 +24,11 @@ const Navbar = forwardRef(({openLoginModal},ref) =>{
         setIsMobileMenuOpen(false);
     };
 
+    const handleClick = () =>{
+        openLoginModal();
+        handleHomeClick();
+    }
+
     useEffect(() =>{
         const handleClickOutside = (event) =>{
             if(dropdownRef.current && !dropdownRef.current.contains(event.target)){
@@ -72,7 +77,7 @@ const Navbar = forwardRef(({openLoginModal},ref) =>{
                 
 
                 <div className="navbar-actions">
-                    <button onClick={openLoginModal}>Register/Login</button>
+                    <button className="login-button"  onClick={openLoginModal}>Register/Login</button>
                     <button className="download-button">Download</button>
                 </div>
             </div>
@@ -97,6 +102,7 @@ const Navbar = forwardRef(({openLoginModal},ref) =>{
             <li><a href="#resources">Resources</a></li>
             <li><a href="#help">Help</a></li>
             <li><a href="#propertyManagers">For Property Managers</a></li>
+            <li><button className="login" onClick={handleClick}>Register/Login</button></li>
           </ul>
         </div>
       )}

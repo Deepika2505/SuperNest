@@ -2,67 +2,51 @@
   width: 100%;
   height: 100%;
   position: relative;
-}
-
-.swiper{
-    width: 100%;
-    height: 100%;
-}
-
-.card {
   display: flex;
-  align-items: flex-end;
   justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.background-image {
   width: 100%;
   height: 100%;
-  overflow: hidden;
-  padding: 10px;
-  background-color: white;
-  color: black;
-  position: relative;
-  box-sizing: border-box;
-}
-
-.card-content {
+  background-image: url("https://s3-alpha-sig.figma.com/img/30d9/179d/a5cce2ae8b0fd7f045cd04611301b353?Expires=1738540800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=np7Fhn3m~qShKVq8PM03U~MRmsS1wAfz3b59r8Xe1N5O4ziPItkzNPj1P-FWDImnJ2-63LQE7WaU4clwkbMC3tuTlTjL4IcsDfMsoaNP3PKgKlgtUM8SvKpcT34ZSX8NrtnjLYw2l9AzKkNXDyYqGt93yYq3KwZb0jMuNXbGk-OHJ9547HtEH4MLzKjJewtg2KycRklMMyNXvWkzCNUjw09ulx9mMy-ktWfrnKNd04vn1vQ7LYm4LGudP7Em2KQ4Hes1YIYAyIhiXumMdpiHhEUMzsZUjRvGdWHmfVV0mo2gov7CNjzUbe-FT7pBOY6DA0e3HKL3R4LhNnc7GsRezg__");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   position: absolute;
-  bottom: 0;
+  top: 0;
   left: 0;
-  right: 0;
-  background: rgba(255,255,255,0.8);
-  color: black;
-  padding: 20px;
-  text-align: left;
-  display: flex;
-  justify-content: flex-end;
-  flex-direction: column;
+  z-index: 1;
 }
 
-.card-content h3 {
-  font-size: 24px;
-  font-weight: bold;
-  margin: 0;
-  line-height: 1.4;
-}
-
-.card-content p {
-    margin-top: 10px;
-    font-size: 16px;
-    line-height: 1.4;
-    max-width: 90%;
-    opacity: 0.8;
-}
-
-.swiper-pagination {
+.sliding-cards-container::before {
+  content: '';
   position: absolute;
-  bottom: 20px;
-  left: 20px;
-  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(5,95,243,0.6);
+  z-index: 2;
 }
 
-.swiper-pagination-bullet {
-  background-color: rgba(0,0,0,0.5);
+.desktop-view {
+  width: 85%;
+  max-width: 400px;
+  color: #1a1a1a;
+  text-align: left;
+  background: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  position: absolute;
+  bottom: 5px;
+  z-index: 3;
 }
 
-.swiper-pagination-bullet-active {
-  background-color: black;
+@media (max-width:768px){
+  .desktop-view{
+    display: none;
+  }
 }

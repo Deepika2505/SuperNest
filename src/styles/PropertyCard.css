@@ -1,7 +1,6 @@
-/* Property Card Styles */
-
 .property-card {
   display: flex;
+  flex-direction: row;
   border: 1px solid #ddd;
   border-radius: 10px;
   overflow: hidden;
@@ -60,9 +59,15 @@
   right: 10px;
 }
 
-.prev-button :hover,
-.next-button :hover{
-    transform: scale(1.1);
+.prev-button:hover,
+.next-button:hover{
+  transform: scale(1.1);
+}
+
+.prev-button:active,
+.next-button:active{
+  transform: scale(0.95);
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 .property-details {
@@ -99,28 +104,49 @@
 
 .feature-box {
   font-size: 12px;
-  padding: 10px;
+  padding: 8px 12px;
   background-color: #f0f0f0;
   border: 1px solid #ddd;
   border-radius: 10px;
-  flex-basis: auto; /* Allow the box to grow based on its content */
-  flex-grow: 0; /* Prevent the box from growing to take extra space */
-  white-space: normal; /* Allow the content to wrap if it's too long */
-  word-wrap: break-word; /* Break the word if necessary */
-  overflow: break-word; /* Prevent overflow of text */
+  flex: 0;
+  display: inline-block;
+  white-space: nowrap;
 }
 
 .more-features {
   font-size: 12px;
-  padding: 10px;
+  padding: 8px 12px;
   background-color: #f0f0f0;
   border: 1px solid #ddd;
   border-radius: 10px;
   cursor: pointer;
+  display: inline-block;
+  white-space: nowrap;
 }
 
 @media (max-width:768px){
   .property-card{
     flex-direction: column;
+  }
+
+  .property-images{
+    width: 100%;
+    height: 250px;
+  }
+
+  .property-image {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .property-details {
+    width: 100%;
+    text-align: left;
+  }
+
+  .property-features {
+    justify-content: left;
   }
 }

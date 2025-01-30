@@ -71,3 +71,13 @@
 .experience-title{
     margin-bottom: 20px;
 }
+
+@media (max-width:768px){
+  .experience-title{
+    width: 100%;
+  }
+
+  .experience-cards{
+    width: 90%;
+  }
+}

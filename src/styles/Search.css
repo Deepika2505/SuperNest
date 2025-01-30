@@ -2,6 +2,14 @@
     position: relative;
 }
 
+.svg-container-1{
+  display: block;
+}
+
+.svg-container-2{
+  display: none;
+}
+
 .footer-search {
   position: absolute;
   top: 40%;
@@ -10,4 +18,14 @@
   z-index: 10; 
   width: 55%;
   box-sizing: border-box;
+}
+
+@media (max-width:768px){
+  .svg-container-1{
+    display: none;
+  }
+  
+  .svg-container-2{
+    display: block;
+  }
 }

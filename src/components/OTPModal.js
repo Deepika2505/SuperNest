@@ -51,11 +51,11 @@ function OTPModal({ closeModal,phoneNumber, openLoginModal }) {
         </div>
         <div className='modal-right'>
         <div className="modal-header">
-          {/* Logo SVG (on the left) */}
             <Logo/>
-          {/* Close button */}
             <button className="close-btn" onClick={closeModal}>✖</button>
         </div>
+        <div className='modal-content'>
+        <div className='modal-text'>
         <h2>
           <strong>Verify OTP</strong>
           <br />
@@ -64,6 +64,7 @@ function OTPModal({ closeModal,phoneNumber, openLoginModal }) {
                     &nbsp;<span className='change-phone' onClick={openLoginModal}>Change?</span>
           </span>
         </h2>
+        </div>
         <div className="otp-input-container">
             {otp.map((digit, index) => (
                 <input
@@ -88,8 +89,9 @@ function OTPModal({ closeModal,phoneNumber, openLoginModal }) {
             </span>
             &nbsp;if you haven't received it.
         </p>
-        <button className='otp-btn' onClick={verifyOtp}>Verify OTP</button>
         {errorMessage && <p className='error-message'>{errorMessage}</p>}
+        </div>
+        <button className='otp-btn' onClick={verifyOtp}>Verify OTP</button>
       </div>
     </div>
     </div>

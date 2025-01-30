@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./../styles/RecentlyAdded.css";
-import PropertyCard from "./PropertyCard"; // Import the PropertyCard component
+import PropertyCard from "./PropertyCard";
 
 const RecentlyAdded = () => {
-  const [scrollPosition, setScrollPosition] = useState(0);
+  // const [scrollPosition, setScrollPosition] = useState(0);
 
   const properties = [
     {
@@ -58,26 +58,25 @@ const RecentlyAdded = () => {
     
   ];
 
-  const scrollLeft = () => {
-    const container = document.getElementById("recently-added-container");
-    const newScrollPosition = Math.max(0, scrollPosition - container.offsetWidth);
-    container.scrollTo({ left: newScrollPosition, behavior: "smooth" });
-    setScrollPosition(newScrollPosition);
-  };
+  // const scrollLeft = () => {
+  //   const container = document.getElementById("recently-added-container");
+  //   const newScrollPosition = Math.max(0, scrollPosition - container.offsetWidth);
+  //   container.scrollTo({ left: newScrollPosition, behavior: "smooth" });
+  //   setScrollPosition(newScrollPosition);
+  // };
 
-  const scrollRight = () => {
-    const container = document.getElementById("recently-added-container");
-    const newScrollPosition = Math.min(
-      container.scrollWidth - container.offsetWidth,
-      scrollPosition + container.offsetWidth
-    );
-    container.scrollTo({ left: newScrollPosition, behavior: "smooth" });
-    setScrollPosition(newScrollPosition);
-  };
+  // const scrollRight = () => {
+  //   const container = document.getElementById("recently-added-container");
+  //   const newScrollPosition = Math.min(
+  //     container.scrollWidth - container.offsetWidth,
+  //     scrollPosition + container.offsetWidth
+  //   );
+  //   container.scrollTo({ left: newScrollPosition, behavior: "smooth" });
+  //   setScrollPosition(newScrollPosition);
+  // };
 
   return (
     <div className="recently-added">
-      {/* Title */}
       <div className="recently-added-header">
         <h2 className="recently-added-title">Recently Added</h2>
         <div className="recently-added-subtext">
@@ -86,17 +85,6 @@ const RecentlyAdded = () => {
         </div>
       </div>
         <div className="recently-added-layout">
-      {/* Arrow Buttons */}
-      <div className="scroll-buttons">
-      <button className="scroll-button" onClick={scrollLeft}>
-        &lt;
-      </button>
-      <button className="scroll-button" onClick={scrollRight}>
-        &gt;
-      </button>
-      </div>
-
-      {/* Property Cards Container */}
       <div id="recently-added-container" className="property-cards-container">
         {properties.map((property, index) => (
           <PropertyCard key={index} property={property} />

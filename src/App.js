@@ -38,6 +38,7 @@ function App(){
   useEffect(()=>{
     const updateNavbarHeight = () => {
       if(navbarRef.current){
+        console.log("Navbar height:", navbarRef.current.offsetHeight);
         setNavbarHeight(navbarRef.current.offsetHeight);
       }
     };
@@ -51,7 +52,7 @@ function App(){
 
   return (
     <div className='App'>
-      <Navbar ref = {navbarRef} openLoginModal={openLoginModal} />
+      <Navbar ref={navbarRef} openLoginModal={openLoginModal} />
       {isLoginModalOpen && (
         <LoginModal
           closeModal={closeModal}

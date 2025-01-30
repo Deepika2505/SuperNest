@@ -21,7 +21,7 @@ const SearchBar = () => {
     <div className="search-bar-container">
       <div className="search-bar-header">
         <span>Trusted by 12000+ tenants</span>
-        <span>Supported by Microsoft for Startups</span>
+        <span className="text1">Supported by Microsoft for Startups</span>
       </div>
       <div className="search-bar">
         <select className="location-dropdown">
@@ -42,6 +42,9 @@ const SearchBar = () => {
           <FiSearch />
         </button>
         </div>
+      </div>
+      <div className="search-bar-header">
+        <span className="text2">Supported by Microsoft for Startups</span>
       </div>
     </div>
     </div>

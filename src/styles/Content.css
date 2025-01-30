@@ -98,21 +98,21 @@
   justify-content: space-between;
   gap: 20px;
   padding: 40px 0;
-  width: 75%;
+  width: 80%;
   margin: 0 auto;
 }
 
-.feature-box {
+.feature-box-content {
   background-color: #fff;
   border-radius: 10px;
-  padding: 20px;
   width: 30%;
+  padding: 20px;
   text-align: left;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease-in-out;
 }
 
-.feature-box:hover {
+.feature-box-content:hover {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
@@ -131,7 +131,7 @@
 }
 
 .feature-icon {
-  font-size: 1rem; /* Adjust the size of the icon */
+  font-size: 1rem;
 }
 
 .feature-title {
@@ -144,16 +144,110 @@
   font-size: 1rem;
   color: #777;
   margin-top: 5px;
+  word-wrap: normal;
+}
+
+.toggle-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.toggle-switch {
+  width: 50%;
+  max-width: 500px;
+  height: 50px;
+  background-color: #ddd;
+  border-radius: 25px;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.toggle-switch.right .toggle-circle {
+  transform: translateX(100%);
+}
+
+.toggle-switch.left .toggle-circle {
+  transform: translateX(0%);
+}
+
+.toggle-circle {
+  width: 50%;
+  height: 100%;
+  background-color: white;
+  border-radius: 25px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: transform 0.3s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-switch.tenant .toggle-circle {
+  transform: translateX(60px);
+}
+
+.toggle-option {
+  flex: 1;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  color: #555;
+  z-index: 1;
+}
+
+.svg-content-1{
+  display: block;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.svg-1,.svg-2{
+  display: flex;
+  justify-content: center;
+  width: 90%;
+}
+
+.svg-2{
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+}
+
+.svg-content-2{
+  display: none;
 }
 
 @media (max-width:768px){
+
+  .svg-content-1{
+    display: none;
+  }
+
+  .svg-content-2{
+    display: block;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   .feature-container{
     flex-direction: column;
     align-items: center;
     gap: 10px;
+    width: 100%;
   }
 
-  .feature-box{
+  .feature-box-content{
     width: 80%;
   }
 }

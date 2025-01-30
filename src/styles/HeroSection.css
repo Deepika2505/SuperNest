@@ -1,8 +1,11 @@
 .hero-section{
     position: relative;
+    margin-top: 0;
     overflow: visible;
     transition: margin-top 0.3s ease;
+    z-index: 1;
 }
+
 
 .hero-search {
   position: absolute;
@@ -10,7 +13,7 @@
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
-  width: 60%;
+  width: 70%;
   box-sizing: border-box;
   margin-bottom: -50px;
 }
@@ -25,7 +28,7 @@
   display: flex;
   align-items: center;
   cursor: pointer;
-  background-color: #4a4a4a; /* Light gray background */
+  background-color: #4a4a4a;
   padding: 8px 16px;
   border-radius: 14px;
   transition: background-color 0.3s;
@@ -58,7 +61,7 @@
 }
 
 .arrow-icon {
-  font-size: 14px; /* Set the size of the arrow */
+  font-size: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -67,9 +70,8 @@
   color: #ffffff;
 }
 
-/* Button hover effect */
 .arrow-button:hover .arrow-icon {
-  color: #1a1a1a; /* Change color on hover */
+  color: #1a1a1a;
 }
 
 .svg-container-1{
@@ -85,6 +87,10 @@
     display: none;
   }
   
+  .prop-owner{
+    margin-top: 10%;
+  }
+
   .svg-container-2{
     display: block;
   }

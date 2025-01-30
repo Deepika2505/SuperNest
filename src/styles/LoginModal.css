@@ -4,11 +4,12 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   z-index: 1000;
+  padding: 10px;
 }
 
 .modal {
@@ -22,27 +23,27 @@
 }
 
 .modal-left{
-    width: 100%;
-    height: 100%;
-    position: relative;
+  width: 50%;
+  height: 100%;
+  position: relative;
 }
 
 .modal-right {
-  flex: 1;
-  padding: 20px;
+  width: 50%;
   text-align: left;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  height: 100%;
+  justify-content: space-between;
+  padding: 20px;
 }
 
 .modal-header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 20px;
+  align-items: center;
+  width: 100%;
 }
+
 
 .close-btn {
   font-size: 18px;
@@ -55,11 +56,17 @@
 }
 
 .close-btn:hover {
-  color: #888; /* Lighter color on hover */
+  color: #888;
+}
+
+.modal-content{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 h2 {
-  margin-bottom: 20px;
   font-size: 14px;
   font-weight: 400;
   color: #333;
@@ -83,7 +90,6 @@ h2 .light-text{
     align-items: center;
     border-bottom: 1px solid #ccc;
     padding-bottom: 5px;
-    margin-bottom: 15px;
 }
 
 .country-code{
@@ -127,4 +133,33 @@ h2 .light-text{
     color: red;
     font-size: 12px;
     margin-bottom: 10px;
+}
+
+@media (max-width:768px){
+  .modal{
+    flex-direction: column;
+    width: 90%;
+    height: auto;
+  }
+  .modal-left{
+    width: 100%;
+    height: 150px;
+  }
+
+  .modal-right{
+    width: 100%;
+    padding: 10px;
+    height: auto;
+  }
+
+  .modal-header{
+    width: 95%;
+  }
+  .modal-content{
+    width: 95%;
+  }
+  .otp-btn{
+    width: 95%;
+    margin-top: 10px;
+  }
 }
