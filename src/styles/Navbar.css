@@ -219,6 +219,7 @@
     flex-direction: row;
     /* align-items: flex-start; */
     justify-content: space-between;
+    padding: 0;
   }
 
   .navbar-left{
@@ -230,8 +231,8 @@
 
   .navbar-actions {
     flex: 1;
-    justify-content: center;
     min-width: auto;
+    gap: 0;
   }
 
   .navbar-actions button {

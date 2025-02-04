@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import "./../styles/PropertyCard.css";
 
+
 const PropertyCard = ({ property }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  const { images, name, location, cost, features, isTopRated } = property;
+  const { images, name, location, area, price, gender, amenities, isTopRated } = property;
 
   const handleNextImage = () => {
     setCurrentImageIndex((prevIndex) =>
@@ -18,12 +19,11 @@ const PropertyCard = ({ property }) => {
     );
   };
 
-  const displayedFeatures = features.slice(0, 3);
-  const remaningFeatures = features.length - 3;
+  const displayedFeatures = amenities.slice(0, 3);
+  const remaningFeatures = amenities.length - 3;
 
   return (
     <div className="property-card">
-      {/* Left Half - Images */}
       <div className="property-images">
         <div className="image-container">
           <img
@@ -40,7 +40,6 @@ const PropertyCard = ({ property }) => {
         </div>
       </div>
 
-      {/* Right Half - Property Details */}
       <div className="property-details">
         {isTopRated && <div className="top-rated">
             <svg width="94" height="24" viewBox="0 0 94 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -51,8 +50,8 @@ const PropertyCard = ({ property }) => {
 
             </div>}
         <h2 className="property-name">{name}</h2>
-        <p className="property-location">{location}</p>
-        <p className="property-cost">from ₹{cost}/month</p>
+        <p className="property-location">{area}, {location}</p>
+        <p className="property-cost">from ₹{price}/month</p>
 
         <div className="property-features">
           {displayedFeatures.map((feature, index) => (

@@ -3,7 +3,8 @@ import './../styles/HeroSection.css';
 import SearchBar from "./SearchBar";
 import { FiChevronRight } from "react-icons/fi";
 
-const HeroSection = () => {
+const HeroSection = ({selectedLocation,
+    setSelectedLocation, searchQuery, setSearchQuery}) => {
     const handleClick = () => {
         console.log("Button clicked, redirect to property owner page");
     }
@@ -687,7 +688,11 @@ const HeroSection = () => {
                 </button>
             </div>
             <div className="hero-search">
-                <SearchBar/>
+                <SearchBar 
+                selectedLocation={selectedLocation}
+                setSelectedLocation={setSelectedLocation}
+                searchQuery={searchQuery}
+                setSearchQuery={setSearchQuery}/>
             </div>
         </div>
     );

@@ -1,21 +1,36 @@
-import React from "react";
+import React, {useState} from "react";
 import "./../styles/SearchBar.css";
 import { FiSearch } from "react-icons/fi";
 
-const SearchBar = () => {
+
+
+const SearchBar = ({selectedLocation,setSelectedLocation,searchQuery,setSearchQuery}) => {
+  
   const handleClick = () => {
     console.log("Search button clicked, redirect!!");
-  }
+  };
+
+  const handleLocationChange = (event) => {
+    setSelectedLocation(event.target.value);
+  };
+
+  const handleSearchInputChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
   return (
     <div className="search-bar-class">
     <div className="search-bar-top">
-        <select className="search-bar-dropdown">
-          <option value="location">Select Location</option>
-          <option value="hyderabad">Hyderabad</option>
-          <option value="bengaluru">Bengaluru</option>
-          <option value="vijayawada">Vijayawada</option>
-          <option value="guwahati">Guwahati</option>
-          <option value="ahmedabad">Ahmedabad</option>
+        <select 
+          className="search-bar-dropdown"
+          value={selectedLocation}
+          onChange={handleLocationChange}>
+          <option value="">Select Location</option>
+          <option value="Hyderabad">Hyderabad</option>
+          <option value="Bengaluru">Bengaluru</option>
+          <option value="Vijayawada">Vijayawada</option>
+          <option value="Guwahati">Guwahati</option>
+          <option value="Ahmedabad">Ahmedabad</option>
         </select>
       </div>
     <div className="search-bar-container">
@@ -24,19 +39,24 @@ const SearchBar = () => {
         <span className="text1">Supported by Microsoft for Startups</span>
       </div>
       <div className="search-bar">
-        <select className="location-dropdown">
-          <option value="location">Select Location</option>
-          <option value="hyderabad">Hyderabad</option>
-          <option value="bengaluru">Bengaluru</option>
-          <option value="vijayawada">Vijayawada</option>
-          <option value="guwahati">Guwahati</option>
-          <option value="ahmedabad">Ahmedabad</option>
+        <select 
+          className="location-dropdown" 
+          value={selectedLocation}
+          onChange={handleLocationChange}>
+          <option value="">Select Location</option>
+          <option value="Hyderabad">Hyderabad</option>
+          <option value="Bengaluru">Bengaluru</option>
+          <option value="Vijayawada">Vijayawada</option>
+          <option value="Guwahati">Guwahati</option>
+          <option value="Ahmedabad">Ahmedabad</option>
         </select>
         <div className="search-input-container">
         <input
           type="text"
           className="search-input"
+          value={searchQuery}
           placeholder="Search properties or localities..."
+          onChange={handleSearchInputChange}
         />
         <button className="search-button" onClick={handleClick}>
           <FiSearch />

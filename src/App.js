@@ -9,9 +9,11 @@ import Content from './components/Content';
 import AvailableIn from './components/AvailableIn';
 import RecentlyAdded from './components/RecentlyAdded';
 import HeroSection from './components/HeroSection';
+import CitySearch from './components/CitySearch';
 
 
 function App(){
+  
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [phoneNumber,setPhoneNumber] =useState('');
   const [isOTPModalOpen, setIsOTPModalOpen] = useState(false);
@@ -50,6 +52,9 @@ function App(){
     };
   },[]);
 
+  const [selectedLocation, setSelectedLocation] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
+
   return (
     <div className='App'>
       <Navbar ref={navbarRef} openLoginModal={openLoginModal} />
@@ -62,14 +67,24 @@ function App(){
       {isOTPModalOpen && (
         <OTPModal phoneNumber={phoneNumber} closeModal={closeModal} openLoginModal={openLoginModal} />
       )}
-      <HeroSection  className="hero-section" style={{ marginTop: `${navbarHeight}px` }}/>
+      <HeroSection  
+        selectedLocation={selectedLocation}
+        setSelectedLocation={setSelectedLocation} 
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+        className="hero-section" 
+        style={{ marginTop: `${navbarHeight}px` }}/>
+      { selectedLocation && (
+        <CitySearch 
+          selectedLocation={selectedLocation}
+          searchQuery={searchQuery}/>
+      )}
       <AvailableIn/>
-      {/* <SearchBar/> */}
       <RecentlyAdded/>
       <Content/>
       <Experience/>
       <Search/>
-      <Footer/>       
+      <Footer />       
     </div>
   )
 }

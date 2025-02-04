@@ -1,9 +1,13 @@
 import React, {useState} from "react";
 import SearchBar from "./SearchBar";
 import "./../styles/Search.css";
+import CitySearch from "./CitySearch";
 
 function Search(){
+    const [selectedLocation, setSelectedLocation] = useState('');
+    const [searchQuery, setSearchQuery] = useState("");
     return(
+        <div>
         <div className="search-footer">
         <div className='svg-container-1'>
             <svg width="100%" height="100%" viewBox="0 0 1440 800" fill="none">
@@ -628,8 +632,18 @@ function Search(){
 
         </div>
         <div className="footer-search">
-            <SearchBar/>
+            <SearchBar
+                selectedLocation={selectedLocation}
+                setSelectedLocation={setSelectedLocation}
+                searchQuery={searchQuery}
+                setSearchQuery={setSearchQuery}/>
         </div>
+        </div>
+        { selectedLocation && (
+            <CitySearch 
+              selectedLocation={selectedLocation}
+              searchQuery={searchQuery}/>
+            )}
         </div>
     );
 }
