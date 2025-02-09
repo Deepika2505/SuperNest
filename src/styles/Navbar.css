@@ -9,6 +9,7 @@
   z-index: 1000;
   /* overflow: visible; */
   box-sizing: border-box;
+  position: fixed;
 }
 
 .navbar-container {
@@ -43,9 +44,26 @@
   padding: 0;
 }
 
-.navbar ul li a {
+.navbar ul li a, .navbar ul li .download-button {
   text-decoration: none;
   color: #333;
+  border: 1px solid transparent;
+  background-color: transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.navbar ul li .dropdown-button {
+  border: none;
+  font: inherit;
+  background: transparent;
+}
+
+.navbar ul li a:hover,
+.navbar ul li .dropdown-button:hover {
+  background-color: #f0f0f0;
+  color: #007bff;
 }
 
 .navbar-actions{
@@ -65,10 +83,16 @@
   white-space: nowrap;
 }
 
+.login-button:hover, .download-button:hover{
+  background-color: grey;
+  color: black;
+}
+
 .download-button {
   background-color: #007bff;
   color: white;
 }
+
 
 .menu-toggle {
   display: none;

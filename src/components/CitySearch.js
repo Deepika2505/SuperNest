@@ -1,81 +1,11 @@
-import React,{useState, useEffect} from "react";
+import React,{useState, useEffect, useRef} from "react";
 import ReactSlider from 'react-slider';
 import PropertyCard from "./PropertyCard";
 import "./../styles/CitySearch.css";
+import MapComponent from "./Map";
 
-const CitySearch = ({selectedLocation, searchQuery}) => {
-    const allProperties = [
-        {
-          images: [
-            "https://s3-alpha-sig.figma.com/img/f998/60e8/a9d1bf8d61521d2250b8035cc758e89c?Expires=1739145600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Nnh~~5hzaIP2g6Jp9CTsKOuXB37O5WrQ4SdVrjd5A46m~Mfa0ZmSj5K2upR6oUhj7prCVublqXoRHQmO5PSGpi8e9s-OlT79dx6W9RWHNw89Hkn0julQU2HvHKJcYT-H-UkoYeHoJlWPk0w0miRe6onpHW3GxSUZluP2ySYQMCI82QI9BBg5r33ni6TXnuPV3KwKsh~6cjQeZkUe1nkJEPfCBnx7tb7NrT3URx~NcjyHsn4xbRWrVfTOYG9tJZ48eZz3uhvAJVlnbFuS7a8jRmn-Iw7Br76bIcGv0iYAOJw7uK-HtVMud4gAAttqdt8H8n7sRWEA6DcHXHvPDDICxg__",
-            "https://s3-alpha-sig.figma.com/img/f998/60e8/a9d1bf8d61521d2250b8035cc758e89c?Expires=1739145600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Nnh~~5hzaIP2g6Jp9CTsKOuXB37O5WrQ4SdVrjd5A46m~Mfa0ZmSj5K2upR6oUhj7prCVublqXoRHQmO5PSGpi8e9s-OlT79dx6W9RWHNw89Hkn0julQU2HvHKJcYT-H-UkoYeHoJlWPk0w0miRe6onpHW3GxSUZluP2ySYQMCI82QI9BBg5r33ni6TXnuPV3KwKsh~6cjQeZkUe1nkJEPfCBnx7tb7NrT3URx~NcjyHsn4xbRWrVfTOYG9tJZ48eZz3uhvAJVlnbFuS7a8jRmn-Iw7Br76bIcGv0iYAOJw7uK-HtVMud4gAAttqdt8H8n7sRWEA6DcHXHvPDDICxg__",
-            "https://s3-alpha-sig.figma.com/img/f998/60e8/a9d1bf8d61521d2250b8035cc758e89c?Expires=1739145600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Nnh~~5hzaIP2g6Jp9CTsKOuXB37O5WrQ4SdVrjd5A46m~Mfa0ZmSj5K2upR6oUhj7prCVublqXoRHQmO5PSGpi8e9s-OlT79dx6W9RWHNw89Hkn0julQU2HvHKJcYT-H-UkoYeHoJlWPk0w0miRe6onpHW3GxSUZluP2ySYQMCI82QI9BBg5r33ni6TXnuPV3KwKsh~6cjQeZkUe1nkJEPfCBnx7tb7NrT3URx~NcjyHsn4xbRWrVfTOYG9tJZ48eZz3uhvAJVlnbFuS7a8jRmn-Iw7Br76bIcGv0iYAOJw7uK-HtVMud4gAAttqdt8H8n7sRWEA6DcHXHvPDDICxg__",
-            "https://s3-alpha-sig.figma.com/img/5b98/76d5/ba9669313020be8e57e81048ae55a4cc?Expires=1739145600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=C4OeUAFrWIeENICXinJ4dt~bn3aKIbOeSceS1xycja4CC5PBuASp-XKlhWenhhlNdbFMAB5vvZ3G1eg7KfXdGvS0HcKSKtyg08swrzePyyR3Gy3ouOphlN1M6dS2rgn6RcVkJTIXp-8s4qzUQVR~yTXIyQrz828z4sNlSIzakGvf73lBmZB3fmAsnc~CDZTce7KOlfT-ilKH~McKejvGNOCgyVSaJ1L3XLFDrNbLesHbq2vI0HpNfuTrZSZq~MJq2IoC0XVLRb8RzZvduDgzPEJnmZpqOdITvCwrxGF~7zooAWZ4xBas3NfDDV~YLed6kOb68fq0-rCLLnW5Kcv7Cg__",
-          ],
-          name: "Canberra House",
-          location: "Hyderabad",
-          area: "Narsingi",
-          price: "45,000",
-          gender: ["male","female"],
-          amenities: ["Washing Machine","AC", "Attached Washroom", "Storage Shelf", "Parking"],
-          isTopRated: true,
-        },
-        {
-            images: [
-              "https://s3-alpha-sig.figma.com/img/f998/60e8/a9d1bf8d61521d2250b8035cc758e89c?Expires=1739145600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Nnh~~5hzaIP2g6Jp9CTsKOuXB37O5WrQ4SdVrjd5A46m~Mfa0ZmSj5K2upR6oUhj7prCVublqXoRHQmO5PSGpi8e9s-OlT79dx6W9RWHNw89Hkn0julQU2HvHKJcYT-H-UkoYeHoJlWPk0w0miRe6onpHW3GxSUZluP2ySYQMCI82QI9BBg5r33ni6TXnuPV3KwKsh~6cjQeZkUe1nkJEPfCBnx7tb7NrT3URx~NcjyHsn4xbRWrVfTOYG9tJZ48eZz3uhvAJVlnbFuS7a8jRmn-Iw7Br76bIcGv0iYAOJw7uK-HtVMud4gAAttqdt8H8n7sRWEA6DcHXHvPDDICxg__",
-              "https://s3-alpha-sig.figma.com/img/f998/60e8/a9d1bf8d61521d2250b8035cc758e89c?Expires=1739145600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Nnh~~5hzaIP2g6Jp9CTsKOuXB37O5WrQ4SdVrjd5A46m~Mfa0ZmSj5K2upR6oUhj7prCVublqXoRHQmO5PSGpi8e9s-OlT79dx6W9RWHNw89Hkn0julQU2HvHKJcYT-H-UkoYeHoJlWPk0w0miRe6onpHW3GxSUZluP2ySYQMCI82QI9BBg5r33ni6TXnuPV3KwKsh~6cjQeZkUe1nkJEPfCBnx7tb7NrT3URx~NcjyHsn4xbRWrVfTOYG9tJZ48eZz3uhvAJVlnbFuS7a8jRmn-Iw7Br76bIcGv0iYAOJw7uK-HtVMud4gAAttqdt8H8n7sRWEA6DcHXHvPDDICxg__",
-              "https://s3-alpha-sig.figma.com/img/f998/60e8/a9d1bf8d61521d2250b8035cc758e89c?Expires=1739145600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Nnh~~5hzaIP2g6Jp9CTsKOuXB37O5WrQ4SdVrjd5A46m~Mfa0ZmSj5K2upR6oUhj7prCVublqXoRHQmO5PSGpi8e9s-OlT79dx6W9RWHNw89Hkn0julQU2HvHKJcYT-H-UkoYeHoJlWPk0w0miRe6onpHW3GxSUZluP2ySYQMCI82QI9BBg5r33ni6TXnuPV3KwKsh~6cjQeZkUe1nkJEPfCBnx7tb7NrT3URx~NcjyHsn4xbRWrVfTOYG9tJZ48eZz3uhvAJVlnbFuS7a8jRmn-Iw7Br76bIcGv0iYAOJw7uK-HtVMud4gAAttqdt8H8n7sRWEA6DcHXHvPDDICxg__",
-              "https://s3-alpha-sig.figma.com/img/5b98/76d5/ba9669313020be8e57e81048ae55a4cc?Expires=1739145600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=C4OeUAFrWIeENICXinJ4dt~bn3aKIbOeSceS1xycja4CC5PBuASp-XKlhWenhhlNdbFMAB5vvZ3G1eg7KfXdGvS0HcKSKtyg08swrzePyyR3Gy3ouOphlN1M6dS2rgn6RcVkJTIXp-8s4qzUQVR~yTXIyQrz828z4sNlSIzakGvf73lBmZB3fmAsnc~CDZTce7KOlfT-ilKH~McKejvGNOCgyVSaJ1L3XLFDrNbLesHbq2vI0HpNfuTrZSZq~MJq2IoC0XVLRb8RzZvduDgzPEJnmZpqOdITvCwrxGF~7zooAWZ4xBas3NfDDV~YLed6kOb68fq0-rCLLnW5Kcv7Cg__",
-            ],
-            name: "House",
-            location: "Hyderabad",
-            area: "Narsingi",
-            price: "45,234",
-            gender: ["male","female"],
-            amenities: ["AC", "Attached Washroom", "Storage Shelf", "Parking"],
-            isTopRated: true,
-          },
-          {
-            images: [
-              "https://s3-alpha-sig.figma.com/img/f998/60e8/a9d1bf8d61521d2250b8035cc758e89c?Expires=1739145600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Nnh~~5hzaIP2g6Jp9CTsKOuXB37O5WrQ4SdVrjd5A46m~Mfa0ZmSj5K2upR6oUhj7prCVublqXoRHQmO5PSGpi8e9s-OlT79dx6W9RWHNw89Hkn0julQU2HvHKJcYT-H-UkoYeHoJlWPk0w0miRe6onpHW3GxSUZluP2ySYQMCI82QI9BBg5r33ni6TXnuPV3KwKsh~6cjQeZkUe1nkJEPfCBnx7tb7NrT3URx~NcjyHsn4xbRWrVfTOYG9tJZ48eZz3uhvAJVlnbFuS7a8jRmn-Iw7Br76bIcGv0iYAOJw7uK-HtVMud4gAAttqdt8H8n7sRWEA6DcHXHvPDDICxg__",
-              "https://s3-alpha-sig.figma.com/img/f998/60e8/a9d1bf8d61521d2250b8035cc758e89c?Expires=1739145600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Nnh~~5hzaIP2g6Jp9CTsKOuXB37O5WrQ4SdVrjd5A46m~Mfa0ZmSj5K2upR6oUhj7prCVublqXoRHQmO5PSGpi8e9s-OlT79dx6W9RWHNw89Hkn0julQU2HvHKJcYT-H-UkoYeHoJlWPk0w0miRe6onpHW3GxSUZluP2ySYQMCI82QI9BBg5r33ni6TXnuPV3KwKsh~6cjQeZkUe1nkJEPfCBnx7tb7NrT3URx~NcjyHsn4xbRWrVfTOYG9tJZ48eZz3uhvAJVlnbFuS7a8jRmn-Iw7Br76bIcGv0iYAOJw7uK-HtVMud4gAAttqdt8H8n7sRWEA6DcHXHvPDDICxg__",
-              "https://s3-alpha-sig.figma.com/img/f998/60e8/a9d1bf8d61521d2250b8035cc758e89c?Expires=1739145600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Nnh~~5hzaIP2g6Jp9CTsKOuXB37O5WrQ4SdVrjd5A46m~Mfa0ZmSj5K2upR6oUhj7prCVublqXoRHQmO5PSGpi8e9s-OlT79dx6W9RWHNw89Hkn0julQU2HvHKJcYT-H-UkoYeHoJlWPk0w0miRe6onpHW3GxSUZluP2ySYQMCI82QI9BBg5r33ni6TXnuPV3KwKsh~6cjQeZkUe1nkJEPfCBnx7tb7NrT3URx~NcjyHsn4xbRWrVfTOYG9tJZ48eZz3uhvAJVlnbFuS7a8jRmn-Iw7Br76bIcGv0iYAOJw7uK-HtVMud4gAAttqdt8H8n7sRWEA6DcHXHvPDDICxg__",
-              "https://s3-alpha-sig.figma.com/img/5b98/76d5/ba9669313020be8e57e81048ae55a4cc?Expires=1739145600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=C4OeUAFrWIeENICXinJ4dt~bn3aKIbOeSceS1xycja4CC5PBuASp-XKlhWenhhlNdbFMAB5vvZ3G1eg7KfXdGvS0HcKSKtyg08swrzePyyR3Gy3ouOphlN1M6dS2rgn6RcVkJTIXp-8s4qzUQVR~yTXIyQrz828z4sNlSIzakGvf73lBmZB3fmAsnc~CDZTce7KOlfT-ilKH~McKejvGNOCgyVSaJ1L3XLFDrNbLesHbq2vI0HpNfuTrZSZq~MJq2IoC0XVLRb8RzZvduDgzPEJnmZpqOdITvCwrxGF~7zooAWZ4xBas3NfDDV~YLed6kOb68fq0-rCLLnW5Kcv7Cg__",
-            ],
-            name: "Amazon",
-            location: "Hyderabad",
-            area: "Narsingi",
-            price: "40,000",
-            gender: ["male","female"],
-            amenities: ["AC", "Attached Washroom", "Storage Shelf", "Parking"],
-            isTopRated: true,
-          },
-          {
-            images: [
-              "https://s3-alpha-sig.figma.com/img/f998/60e8/a9d1bf8d61521d2250b8035cc758e89c?Expires=1739145600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Nnh~~5hzaIP2g6Jp9CTsKOuXB37O5WrQ4SdVrjd5A46m~Mfa0ZmSj5K2upR6oUhj7prCVublqXoRHQmO5PSGpi8e9s-OlT79dx6W9RWHNw89Hkn0julQU2HvHKJcYT-H-UkoYeHoJlWPk0w0miRe6onpHW3GxSUZluP2ySYQMCI82QI9BBg5r33ni6TXnuPV3KwKsh~6cjQeZkUe1nkJEPfCBnx7tb7NrT3URx~NcjyHsn4xbRWrVfTOYG9tJZ48eZz3uhvAJVlnbFuS7a8jRmn-Iw7Br76bIcGv0iYAOJw7uK-HtVMud4gAAttqdt8H8n7sRWEA6DcHXHvPDDICxg__",
-              "https://s3-alpha-sig.figma.com/img/f998/60e8/a9d1bf8d61521d2250b8035cc758e89c?Expires=1739145600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Nnh~~5hzaIP2g6Jp9CTsKOuXB37O5WrQ4SdVrjd5A46m~Mfa0ZmSj5K2upR6oUhj7prCVublqXoRHQmO5PSGpi8e9s-OlT79dx6W9RWHNw89Hkn0julQU2HvHKJcYT-H-UkoYeHoJlWPk0w0miRe6onpHW3GxSUZluP2ySYQMCI82QI9BBg5r33ni6TXnuPV3KwKsh~6cjQeZkUe1nkJEPfCBnx7tb7NrT3URx~NcjyHsn4xbRWrVfTOYG9tJZ48eZz3uhvAJVlnbFuS7a8jRmn-Iw7Br76bIcGv0iYAOJw7uK-HtVMud4gAAttqdt8H8n7sRWEA6DcHXHvPDDICxg__",
-              "https://s3-alpha-sig.figma.com/img/f998/60e8/a9d1bf8d61521d2250b8035cc758e89c?Expires=1739145600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Nnh~~5hzaIP2g6Jp9CTsKOuXB37O5WrQ4SdVrjd5A46m~Mfa0ZmSj5K2upR6oUhj7prCVublqXoRHQmO5PSGpi8e9s-OlT79dx6W9RWHNw89Hkn0julQU2HvHKJcYT-H-UkoYeHoJlWPk0w0miRe6onpHW3GxSUZluP2ySYQMCI82QI9BBg5r33ni6TXnuPV3KwKsh~6cjQeZkUe1nkJEPfCBnx7tb7NrT3URx~NcjyHsn4xbRWrVfTOYG9tJZ48eZz3uhvAJVlnbFuS7a8jRmn-Iw7Br76bIcGv0iYAOJw7uK-HtVMud4gAAttqdt8H8n7sRWEA6DcHXHvPDDICxg__",
-              "https://s3-alpha-sig.figma.com/img/5b98/76d5/ba9669313020be8e57e81048ae55a4cc?Expires=1739145600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=C4OeUAFrWIeENICXinJ4dt~bn3aKIbOeSceS1xycja4CC5PBuASp-XKlhWenhhlNdbFMAB5vvZ3G1eg7KfXdGvS0HcKSKtyg08swrzePyyR3Gy3ouOphlN1M6dS2rgn6RcVkJTIXp-8s4qzUQVR~yTXIyQrz828z4sNlSIzakGvf73lBmZB3fmAsnc~CDZTce7KOlfT-ilKH~McKejvGNOCgyVSaJ1L3XLFDrNbLesHbq2vI0HpNfuTrZSZq~MJq2IoC0XVLRb8RzZvduDgzPEJnmZpqOdITvCwrxGF~7zooAWZ4xBas3NfDDV~YLed6kOb68fq0-rCLLnW5Kcv7Cg__",
-            ],
-            name: "Canberra",
-            location: "Hyderabad",
-            area: "Narsingi",
-            price: "42,000",
-            gender: ["male","female"],
-            amenities: ["AC", "Attached Washroom", "Storage Shelf", "Parking"],
-            isTopRated: true,
-          },
-        
-      ];
-    // useEffect(() => {
-  //   // Fetch properties from API
-  //   fetch('https://api.example.com/properties')
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       setAllProperties(data);
-  //     })
-  //     .catch((error) => console.error('Error fetching properties:', error));
-  // }, []);
+const CitySearch = React.forwardRef(({ selectedLocation, searchQuery, allProperties }) => {
+
     const [filteredProperties, setFilteredProperties] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const propertiesPerPage = 5;
@@ -96,6 +26,8 @@ const CitySearch = ({selectedLocation, searchQuery}) => {
 
     const [showSortModal, setShowSortModal] = useState(false); // For toggling the sort modal
     const [sortOption, setSortOption] = useState('');
+
+    const previousFilters = useRef(filters);
 
     const applyFilters = () => {
         let filtered = allProperties;
@@ -144,8 +76,13 @@ const CitySearch = ({selectedLocation, searchQuery}) => {
             );
         }
 
-        setFilteredProperties(filtered);
-        setCurrentPage(1); // Reset pagination
+        if(JSON.stringify(filtered)!==JSON.stringify(filteredProperties)){
+            setFilteredProperties(filtered);
+            setCurrentPage(1);
+        }
+
+        // setFilteredProperties(filtered);
+        // setCurrentPage(1); // Reset pagination
         if(sortOption){
             sortProperties(sortOption);
         }
@@ -186,12 +123,14 @@ const CitySearch = ({selectedLocation, searchQuery}) => {
         if (currentPage < totalPages) {
           setCurrentPage(currentPage + 1);
         }
+        else setCurrentPage(totalPages);
     };
     
     const handlePrevPage = () => {
         if (currentPage > 1) {
           setCurrentPage(currentPage - 1);
         }
+        else setCurrentPage(1);
     };
     
     const handlePageClick = (pageNumber) => {
@@ -208,11 +147,11 @@ const CitySearch = ({selectedLocation, searchQuery}) => {
     };
     
     const toggleFilters = () => {
-        if(setShowSortModal) setShowSortModal(false);
+        setShowSortModal(false);
         setShowFilters(!showFilters);
     };
     const toggleSortModal = () => {
-        if(setShowFilters) setShowFilters(false);
+        setShowFilters(false);
         setShowSortModal((prev) => !prev);
     };
     
@@ -235,18 +174,15 @@ const CitySearch = ({selectedLocation, searchQuery}) => {
         setCurrentPage(1);
     };
 
-    useEffect(() => {
-        applyFilters();
-      }, [selectedLocation]);
       useEffect(() => {
         applyFilters();
-      }, [allProperties, selectedLocation, searchQuery]);
+      }, [allProperties, selectedLocation, searchQuery, JSON.stringify(filters)]);
 
     useEffect(() => {
         if(sortOption){
             sortProperties(sortOption);
         }
-    }, [filteredProperties]);
+    }, [sortOption]);
 
     const [pendingFilters, setPendingFilters] = useState(filters);
 
@@ -405,8 +341,8 @@ const CitySearch = ({selectedLocation, searchQuery}) => {
                 )}
 
                     {filteredProperties.length > 0 ? (
-                        filteredProperties.map((property) => (
-                        <PropertyCard key={property.id} property={property} />
+                        filteredProperties.map((property, index) => (
+                        <PropertyCard key={index} property={property} />
                         ))
                     ) : (
                         <div></div>
@@ -443,11 +379,11 @@ const CitySearch = ({selectedLocation, searchQuery}) => {
             </div>
             <div className="city-search-right">
                 {filteredProperties.length>0 && (
-                <div className="map">Map goes here</div>
+                <MapComponent properties={filteredProperties}/>
                 )}
             </div>
         </div>
     );
-};
+});
     
 export default CitySearch;

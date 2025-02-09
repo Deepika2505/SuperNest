@@ -1,8 +1,10 @@
 import React, {useEffect, useRef, useState,forwardRef} from "react";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./../styles/Navbar.css";
 import Logo from "./Logo";
 
-const Navbar = forwardRef(({openLoginModal},ref) =>{
+const Navbar = forwardRef(({openLoginModal, setSelectedLocation, citySearchRef},ref) =>{
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const dropdownRef = useRef(null);
@@ -29,6 +31,16 @@ const Navbar = forwardRef(({openLoginModal},ref) =>{
         handleHomeClick();
     }
 
+    const navigate = useNavigate();
+    const handleLocationClick = (location) => {
+        setSelectedLocation(location);
+        navigate(`/`);
+        setTimeout(() => {
+            citySearchRef.current?.scrollIntoView({ behavior: "smooth" });
+        }, 200);
+        setIsDropdownOpen(false);
+        setIsMobileMenuOpen(false);
+    };
     useEffect(() =>{
         const handleClickOutside = (event) =>{
             if(dropdownRef.current && !dropdownRef.current.contains(event.target)){
@@ -54,17 +66,17 @@ const Navbar = forwardRef(({openLoginModal},ref) =>{
                     <div className="navbar-options">
                     <ul>
                         <li className="dropdown" ref={dropdownRef}>
-                            <a href="#browse" onClick={toggleDropdown}>
+                            <button className="dropdown-button" onClick={toggleDropdown}>
                                 Browse
                                 <span className="arrow">▼</span>
-                            </a>
+                            </button>
                             {isDropdownOpen&& (
                                 <ul className="dropdown-menu">
-                                    <li><a href="hyderabad">Hyderabad</a></li>
-                                    <li><a href="bangalore">Bangalore</a></li>
-                                    <li><a href="vijayawada">Vijayawada</a></li>
-                                    <li><a href="guwahati">Guwahati</a></li>
-                                    <li><a href="ahmedabad">Ahmedabad</a></li>
+                                    <li onClick={() => handleLocationClick("Hyderabad")}>Hyderabad</li>
+                                    <li onClick={() => handleLocationClick("Bengaluru")}>Bengaluru</li>
+                                    <li onClick={() => handleLocationClick("Vijayawada")}>Vijayawada</li>
+                                    <li onClick={() => handleLocationClick("Guwahati")}>Guwahati</li>
+                                    <li onClick={() => handleLocationClick("Ahmedabad")}>Ahmedabad</li>
                                 </ul>
                             )}
                         </li>
@@ -91,11 +103,11 @@ const Navbar = forwardRef(({openLoginModal},ref) =>{
                 </button>
               {isBrowseOpen && (
                 <ul className="collapsible-content">
-                  <li><a href="hyderabad">Hyderabad</a></li>
-                  <li><a href="bangalore">Bangalore</a></li>
-                  <li><a href="vijayawada">Vijayawada</a></li>
-                  <li><a href="guwahati">Guwahati</a></li>
-                  <li><a href="ahmedabad">Ahmedabad</a></li>
+                    <li onClick={() => handleLocationClick("Hyderabad")}>Hyderabad</li>
+                    <li onClick={() => handleLocationClick("Bengaluru")}>Bengaluru</li>
+                    <li onClick={() => handleLocationClick("Vijayawada")}>Vijayawada</li>
+                    <li onClick={() => handleLocationClick("Guwahati")}>Guwahati</li>
+                    <li onClick={() => handleLocationClick("Ahmedabad")}>Ahmedabad</li>
                 </ul>
               )}
             </li>

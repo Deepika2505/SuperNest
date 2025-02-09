@@ -1,19 +1,23 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./../styles/PropertyCard.css";
 
 
 const PropertyCard = ({ property }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const navigate = useNavigate();
 
-  const { images, name, location, area, price, gender, amenities, isTopRated } = property;
+  const { images, name, location, area, price, originalPrice, gender, occupancy, amenities, isTopRated, latitude, longitude, phoneNumber, overallRating, complaintResolution, reviews } = property;
 
-  const handleNextImage = () => {
+  const handleNextImage = (e) => {
+    e.stopPropagation();
     setCurrentImageIndex((prevIndex) =>
       prevIndex === images.length - 1 ? 0 : prevIndex + 1
     );
   };
 
-  const handlePrevImage = () => {
+  const handlePrevImage = (e) => {
+    e.stopPropagation();
     setCurrentImageIndex((prevIndex) =>
       prevIndex === 0 ? images.length - 1 : prevIndex - 1
     );
@@ -22,8 +26,12 @@ const PropertyCard = ({ property }) => {
   const displayedFeatures = amenities.slice(0, 3);
   const remaningFeatures = amenities.length - 3;
 
+  const handleCardClick = (e) => {
+    navigate(`/property/${encodeURIComponent(name)}?location=${property.location}`, { state: { property } });
+  };
+
   return (
-    <div className="property-card">
+    <div className="property-card" onClick={handleCardClick} style={{cursor: "pointer"}}>
       <div className="property-images">
         <div className="image-container">
           <img
@@ -37,6 +45,14 @@ const PropertyCard = ({ property }) => {
           <button className="next-button" onClick={handleNextImage}>
             &gt;
           </button>
+          <div className="bottom-badges">
+            <div className="badge gender-badge">
+              {gender.includes("male") && gender.includes("female") ? "Unisex" : gender[0]}
+            </div>
+            <div className="badge occupancy-badge">
+              {property.occupancy.join(", ")}
+            </div>
+          </div>
         </div>
       </div>
 

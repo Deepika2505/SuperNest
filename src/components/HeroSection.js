@@ -1,15 +1,15 @@
-import React from "react";
+import React, {useRef} from "react";
 import './../styles/HeroSection.css';
 import SearchBar from "./SearchBar";
 import { FiChevronRight } from "react-icons/fi";
 
-const HeroSection = ({selectedLocation,
-    setSelectedLocation, searchQuery, setSearchQuery}) => {
+const HeroSection = ({citySearchRef, selectedLocation,
+    setSelectedLocation, searchQuery, setSearchQuery, navbarHeight}) => {
     const handleClick = () => {
         console.log("Button clicked, redirect to property owner page");
     }
     return(
-        <div className="hero-section">
+        <div className="hero-section" style={{paddingTop: `${navbarHeight}px`}}>
             <div className="svg-container-1">
             <svg width="100%" height="100%" viewBox="0 0 1408 452" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_1975_10114)">
@@ -670,7 +670,10 @@ const HeroSection = ({selectedLocation,
 </svg>
 
             </div>
-            <div className="prop-owner">
+            <div 
+                className="prop-owner"
+                style={{ top: `calc(${navbarHeight}px + 4%)` }}
+            >
                 <span className="icon">
                     <svg width="24" height="20" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 <rect width="24" height="20" rx="10" fill="#3581FE"/>
@@ -687,7 +690,7 @@ const HeroSection = ({selectedLocation,
                 <span className="arrow-icon"><FiChevronRight/></span>
                 </button>
             </div>
-            <div className="hero-search">
+            <div ref={citySearchRef} className="hero-search">
                 <SearchBar 
                 selectedLocation={selectedLocation}
                 setSelectedLocation={setSelectedLocation}
