@@ -222,7 +222,9 @@ const CitySearch = React.forwardRef(({ selectedLocation, searchQuery, allPropert
         <div className="city-search">
             <div className="city-search-left">
                     <div className="info">
-                        <h3>{`Found ${filteredProperties.length} listings in ${selectedLocation}`}</h3>
+                        <h3>
+                            {`Found ${filteredProperties.length} listings ${selectedLocation ? `in ${selectedLocation}` : ''}${searchQuery ? ` matching "${searchQuery}"`: ''}`}
+                        </h3>
                             <div className="sort-filter-buttons">
                                 <button 
                                     className={`sort-btn ${showSortModal ? "active" : ""}`}

@@ -23,6 +23,7 @@ const Navbar = forwardRef(({openLoginModal, setSelectedLocation, citySearchRef},
     };
 
     const handleHomeClick = () => {
+        navigate(`/`);
         setIsMobileMenuOpen(false);
     };
 
@@ -58,7 +59,7 @@ const Navbar = forwardRef(({openLoginModal, setSelectedLocation, citySearchRef},
             <div className="navbar-container">
                 <div className="navbar-left">
                     <button className="menu-toggle" onClick={toggleMobileMenu}>
-                        &#9776;
+                        {isMobileMenuOpen ? "✖" : "☰"}
                     </button>
                     <div className="navbar-logo">
                     <Logo />
@@ -94,9 +95,10 @@ const Navbar = forwardRef(({openLoginModal, setSelectedLocation, citySearchRef},
                 </div>
             </div>
             {isMobileMenuOpen && (
-        <div className="mobile-menu">
+        <div className={`mobile-menu ${isMobileMenuOpen ? "" : "mobile-menu-hidden"}`}>
+            
           <ul>
-            <li><a href="#home" onClick={handleHomeClick}>Home</a></li> {/* Close menu when clicked */}
+            <li onClick={handleHomeClick}>Home</li>
             <li>
                 <button className="collapsible" onClick={toggleBrowse}>
                     {isBrowseOpen ? "▼" : "►"} Browse

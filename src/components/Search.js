@@ -3,7 +3,7 @@ import SearchBar from "./SearchBar";
 import "./../styles/Search.css";
 import CitySearch from "./CitySearch";
 
-function Search(){
+const Search = ({allProperties}) => {
     const [selectedLocation, setSelectedLocation] = useState('');
     const [searchQuery, setSearchQuery] = useState("");
     return(
@@ -642,7 +642,8 @@ function Search(){
         { selectedLocation && (
             <CitySearch 
               selectedLocation={selectedLocation}
-              searchQuery={searchQuery}/>
+              searchQuery={searchQuery}
+              allProperties={allProperties}/>
             )}
         </div>
     );

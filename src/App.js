@@ -520,7 +520,7 @@ function App(){
               navbarHeight={navbarHeight}
               citySearchRef={citySearchRef}
             />
-            { selectedLocation && (
+            { (selectedLocation || searchQuery) && (
               <CitySearch
                 selectedLocation={selectedLocation}
                 searchQuery={searchQuery}
@@ -531,7 +531,8 @@ function App(){
               properties={allProperties}/>
             <Content/>
             <Experience/>
-            <Search/>
+            <Search
+              allProperties={allProperties}/>
           </>
         }/>
         <Route 
@@ -543,7 +544,10 @@ function App(){
           }
         />
       </Routes>
-      <Footer />
+      <Footer
+        setSearchQuery={setSearchQuery}
+        citySearchRef={citySearchRef}
+         />
     </div>
     </Router>
   )
